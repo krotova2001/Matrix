@@ -7,8 +7,8 @@ class Matrix
 	//создадим основной класс для хранения данных квадратной матрицы (сделаем ее квадратной)
 	//чтобы определить размер массива при создании объекта, сделаем массив статическим 
 {
-	int static lenth;
-	static int mass[][];
+	int const lenth;
+	int mass[][lenth];
 	
 public:
 	Matrix(int lenth)
