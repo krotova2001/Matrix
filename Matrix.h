@@ -2,23 +2,35 @@
 #include <ctime>
 #include <iostream>
 using namespace std;
+template <typename T>
 
-class Matrix
-	//создадим основной класс для хранения данных квадратной матрицы (сделаем ее квадратной)
-	//чтобы определить размер массива при создании объекта, сделаем массив статическим 
+class Matrix//создадим основной класс для хранения данных  матрицы
 {
-	int const lenth;
-	int mass[][lenth];
-	
+	int M, N; // длина и высота матрицы
+	T* start; // адрес первого элемента
 public:
-	Matrix(int lenth)
+	Matrix(): M{0}, N{0}, start{nullptr}{} // конструктор по умолчанию
+	Matrix(int m) :Matrix(m, m) {} //на случай квадратной матрицы
+	Matrix(int m, int n) // конструктор с параметрами
 	{
-		for (int i = 0; i < lenth; i++)
+		M = m;
+		N = n;
+		start = new T[M * N];
+	}
+	
+	Matrix Init_random() // инициализация случайными значениями
+	{
+		for (size_t i = 0; i < length; i++)
 		{
-			for (int j = 0; j < lenth; j++)
-				mass[i][j] = rand() % 10;
+
 		}
 	}
 
+	int Size() { return M * N }; // узнать размер матрицы
+	
+	~Matrix()
+	{
+		if (start)delete[]start;
+	}
 };
 
