@@ -9,6 +9,11 @@ int main()
     Matrix<int> A;
     Matrix<int> B(5);
     Matrix<int> C(6,2);
+   
+    C.Init_random();
 
+    C.Show();
+    //C.Init_manual();
+    cout << "max is "<<C.Show_min();
 }
 
