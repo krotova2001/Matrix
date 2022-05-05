@@ -39,7 +39,7 @@ public:
 		return *this;
 	}
 
-	T Show_max() // подумать над типами
+	T Show_max() // максимальный элемент матрицы
 	{
 		T tmp=start[0];
 		for (int i = 0; i < M*N; i++)
@@ -49,7 +49,7 @@ public:
 		return tmp;
 	}
 
-	T Show_min()
+	T Show_min() // минимальный элемент матрицы
 	{
 		T tmp = start[0];
 		for (int i = 0; i < M * N; i++)
@@ -59,9 +59,9 @@ public:
 		return tmp;
 	}
 
-	void Show()
+	void Show() // показать матрицу
 	{
-		if (start)
+		if (start) // если матрица не пустая
 		{
 			cout << "\n";
 			for (int i = 0; i < M*N;)
@@ -82,10 +82,60 @@ public:
 
 	int Size() { return M * N; } // узнать размер матрицы
 	
-	~Matrix()
+	Matrix& operator+(Matrix &A) //перегрузка сложения
 	{
-		if (start)delete[]start;
-		start = nullptr;
+		if (Size() == A.Size()) // делаем только, если размеры матриц одинаковые
+		{
+			for (int i = 0; i < M*N; i++)
+			{
+				start[i] += A.start[i];
+			}
+			return *this;
+		}
 	}
-};
+	
+	Matrix& operator-(Matrix& A) //перегрузка вычинтания
+	{
+		if (Size() == A.Size()) // делаем только, если размеры матриц одинаковые
+		{
+			for (int i = 0; i < M * N; i++)
+			{
+				start[i] -= A.start[i];
+			}
+			return *this;
+		}
+	}
+
+	Matrix& operator*(Matrix & A) //перегрузка умножения
+	{
+		if (Size() == A.Size()) // делаем только, если размеры матриц одинаковые
+		{
+			for (int i = 0; i < M * N; i++)
+			{
+				start[i] = start[i] * A.start[i];
+			}
+			return *this;
+		}
+	};
+
+	Matrix& operator/ (Matrix& A) //перегрузка вычинтания
+	{
+		if (Size() == A.Size()) // делаем только, если размеры матриц одинаковые
+		{
+			for (int i = 0; i < M * N; i++)
+			{
+				start[i] /= A.start[i];
+			}
+			return *this;
+		}
+	}
+
+
+
+		~Matrix() // деструктор
+		{
+			if (start)delete[]start;
+			start = nullptr;
+		}
+	};
 

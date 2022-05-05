@@ -15,5 +15,22 @@ int main()
     C.Show();
     //C.Init_manual();
     cout << "max is "<<C.Show_min();
+    cout << "-------------------------";
+
+    Matrix<double> P(4), P1(4);  
+    P.Init_random();  P1.Init_random();
+    P.Show();  P1.Show();
+    
+    P + P1;
+    P.Show();
+    P - P1;
+    P.Show();
+    P * P1;
+    P.Show();
+    P / P1;
+    P.Show();
+
+
+
 }
 
